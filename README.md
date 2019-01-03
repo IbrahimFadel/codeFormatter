@@ -8,5 +8,6 @@ Help format code according to what YOU want.
   * curly: inline or newline...
   
   Ex. 
+  
   ![alt text](https://ibrahimfadel.com/img/readme.png)
   * function spacing: How many returns between functions
