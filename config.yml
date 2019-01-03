@@ -1,0 +1,4 @@
+settings:
+  file: 'test.js'       # Include file ending(ex .js)
+  curly: inline         # inline or newline
+  functionSpacing: 1    # integer
