@@ -1,4 +1,9 @@
-function hello() {
+function hello() 
+{
+	hi
+}
 
+function test()  {
 
+	no
 }
