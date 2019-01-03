@@ -28,13 +28,8 @@ def moveCurylyNewline(i):
 		outputFile.write(data[i])
 		outputFile.write(new2)
 		for i in range(len(data) - 1):
-			print(len(data))
-			print(i)
 			if i < len(data):
 				outputFile.write('\n' + data[i + 1])
-			#else:
-			#	outputFile.write('\n' + data[i] + '\n')
-		print(new,new2)
 
 file = open(filename, 'r')
 
