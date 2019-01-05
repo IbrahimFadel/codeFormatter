@@ -8,5 +8,12 @@ Help format code according to what YOU want.
   * curly: inline or newline...
   
   Ex. 
-  ![alt text](https://raw.githubusercontent.com/IbrahimFadel/codeFormatter/master/img/readme.png)
+  
+  ![alt text](https://ibrahimfadel.com/img/readme.png)
   * function spacing: How many returns between functions
+
+2. Run the compiler
+
+ * python3 {inputfile.js}
+ 
+ Ex. python3 test.js
