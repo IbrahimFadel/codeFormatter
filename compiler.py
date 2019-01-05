@@ -1,3 +1,18 @@
+"""
+
+888888b.             8888888 888                       888      d8b                   8888888888               888          888 
+888  "88b              888   888                       888      Y8P                   888                      888          888 
+888  .88P              888   888                       888                            888                      888          888 
+8888888K.  888  888    888   88888b.  888d888  8888b.  88888b.  888 88888b.d88b.      8888888     8888b.   .d88888  .d88b.  888 
+888  "Y88b 888  888    888   888 "88b 888P"       "88b 888 "88b 888 888 "888 "88b     888            "88b d88" 888 d8P  Y8b 888 
+888    888 888  88     888   888  888 888     .d888888 888  888 888 888  888  888     888        .d888888 888  888 88888888 888 
+888   d88P Y88b 888    888   888 d88P 888     888  888 888  888 888 888  888  888     888        888  888 Y88b 888 Y8b.     888 
+8888888P"   "Y88888  8888888 88888P"  888     "Y888888 888  888 888 888  888  888     888        "Y888888  "Y88888  "Y8888  888 
+                888                                                                                                                    
+           Y8b d88P                                                                                                                    
+            "Y88P"                                                                                                                     
+
+"""
 from ruamel.yaml import YAML 
 
 yaml = YAML()
@@ -9,36 +24,42 @@ functionSpacing = data['settings']['functionSpacing']
 filename = data['settings']['inputFile']
 output = data['settings']['outputFile']
 
-outputArray = []
+nlOutputArray = []
+ilOutputArray = []
 
 def moveCurlyInline(i):
-	with open(filename, 'r') as inputFile:
-		data = [line.rstrip("\n") for line in inputFile]
-		data[i - 1] += ' {'
-		data[i] = ''
-	with open(output, 'w') as outputFile:
-		try:
-			for i in range(len(data)):
-				outputFile.write(data[i] + '\n')
-		except:
-			print("Error compiling")
+	global amntRuns
+	global ilOutputArray
+	with open(filename, "r") as inputFile:
+		data = [line.rstrip('\n') for line in inputFile]
+		pos = data[i].find('{')
+		removeNL = data[i - 1] + data[i][:pos + 1] + '\b\b'
+		removeCurly = data[i].rstrip('{')
+		data[i] = removeCurly
+		ilOutputArray.append(removeNL)
+		data[i - 1] = ilOutputArray[amntRuns]
+	with open(output, "w") as outputFile:
+		for x in range(len(data)):
+			if(data[x].count('{') > 0):
+				outputFile.write(ilOutputArray[amntRuns])
+			else:
+				print(data[x])
+				outputFile.write(data[x] + '\n')
 
 def moveCurylyNewline(i):
 	global amntRuns
-	global outputArray
-	global Is
-	Is.append(i)
+	global nlOutputArray
 	with open(filename, "r") as inputFile:
 		data = [line.rstrip('\n') for line in inputFile]
 		pos = data[i].find('{')
 		insertNL = data[i][:pos] + '\n{'
-		outputArray.append(insertNL)
-		data[i] = outputArray[amntRuns]
+		nlOutputArray.append(insertNL)
+		data[i] = nlOutputArray[amntRuns]
 	with open(output, "w") as outputFile:
 		try:
 			for x in range(len(data)):
 				if(data[x].count('function') > 0):
-					outputFile.write(outputArray[amntRuns] + '\n')
+					outputFile.write(nlOutputArray[amntRuns] + '\n')
 				else:
 					outputFile.write(data[x] + '\n')
 		except:
@@ -53,7 +74,6 @@ for line in file.readlines():
 	i += 1
 
 amntRuns = 0
-Is = []
 for i in range(len(lines)):	
 	if curly == 'newline':
 		if 'function' not in lines[i]:
@@ -61,12 +81,9 @@ for i in range(len(lines)):
 		else:
 			moveCurylyNewline(i)
 			amntRuns += 1
-
-	"""print(lines[i])
-	if lines[i][0] == '{' and curly == 'inline':
-		moveCurlyInline(i)
-
-	elif lines[i].count('function') > 0 and lines[i].count('{') > 0 and curly == 'newline':
-		#print(lines[i][0])
-		moveCurylyNewline(i)"""
-
+	elif curly == 'inline':
+		if '{' not in lines[i]:
+			continue
+		else:
+			moveCurlyInline(i)
+			amntRuns += 1
