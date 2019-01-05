@@ -1,5 +1,5 @@
 settings:
   inputFile: 'test.js'       # Where the file to be compiled is located (include .js)
   outputFile: 'output.js'    # Where the compiled code with be written (include .js)
-  curly: inline              # inline or newline
+  curly: newline              # inline or newline
   functionSpacing: 1         # integer

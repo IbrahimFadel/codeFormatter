@@ -1,9 +1,8 @@
-function hello() 
-{
-	hi
+function hello() {
+	console.log("I'm inline")
 }
 
-function test()  {
-
-	no
+function hello() 
+{
+	console.log("I'm inline")
 }
