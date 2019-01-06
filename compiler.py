@@ -36,14 +36,19 @@ def moveCurlyInline(i):
 		removeNL = data[i - 1] + data[i][:pos + 1] + '\b\b'
 		removeCurly = data[i].rstrip('{')
 		data[i] = removeCurly
+		#print(data[i-1], data[i])
 		ilOutputArray.append(removeNL)
 		data[i - 1] = ilOutputArray[amntRuns]
+
 	with open(output, "w") as outputFile:
 		for x in range(len(data)):
+			print(data[x])
+			
 			if(data[x].count('{') > 0):
+
 				outputFile.write(ilOutputArray[amntRuns])
 			else:
-				print(data[x])
+				#print(data[x])
 				outputFile.write(data[x] + '\n')
 
 def moveCurylyNewline(i):
