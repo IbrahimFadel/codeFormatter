@@ -14,6 +14,4 @@ Help format code according to what YOU want.
 
 2. Run the compiler
 
- * python3 {inputfile.js}
- 
- Ex. python3 test.js
+ * python3 compiler.py
