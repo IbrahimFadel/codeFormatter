@@ -30,7 +30,19 @@ lines = []
 def moveNewLine(i):
 	if(lines[i].find('//') == -1):
 		pos = lines[i].find('{')
-		newline = lines[i][:pos] + '\n' + lines[i][pos:]
+
+		#print(lines[i].count('\t'))
+		if(lines[i].count('\t') > 0):
+			amntTabs = lines[i].count('\t')
+		else:
+			amntTabs = 0
+
+		newline = lines[i][:pos] + '\n'
+		for x in range(amntTabs):
+			newline += '\t'
+
+		newline += lines[i][pos:]
+
 		lines[i] = newline
 		with open(outputFileName, 'w') as outputFile:
 			for x in range(len(lines)):
