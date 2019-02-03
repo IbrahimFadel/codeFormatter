@@ -32,7 +32,6 @@ def moveNewLine(i):
 		pos = lines[i].find('{')
 		newline = lines[i][:pos] + '\n' + lines[i][pos:]
 		lines[i] = newline
-		print(lines[i])
 		with open(outputFileName, 'w') as outputFile:
 			for x in range(len(lines)):
 				outputFile.write(lines[x])
@@ -43,7 +42,6 @@ def moveInline(i):
 	newline = noNew + ' ' + lines[i]
 	lines[i - 1] = newline
 	lines[i] = ''
-	print(newline)
 
 	with open(outputFileName, 'w') as outputFile:
 		for x in range(len(lines)):
