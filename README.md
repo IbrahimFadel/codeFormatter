@@ -9,7 +9,7 @@ Help format code according to what YOU want.
   
   Ex. 
   
-  ![alt text](https://ibrahimfadel.com/img/readme.png)
+  ![alt text](https://ibrahimfadel.github.io/img/readme.png)
   * function spacing: How many returns between functions
 
 2. Run the compiler
