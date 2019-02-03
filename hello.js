@@ -1,11 +1,14 @@
-function() {
+function()
+{
 fdklsnfln
 }
 
-function() {
+function()
+{
 
 fdsagfes vd
-	function() 	{
+	function()
+	{
 		bfdv 
 
 		dfv 
