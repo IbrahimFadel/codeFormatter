@@ -12,6 +12,10 @@ Help format code according to what YOU want.
   ![alt text](https://ibrahimfadel.github.io/img/readme.png)
   * function spacing: How many returns between functions
 
-2. Run the compiler
+2. Run the setup file(only the first time running)
 
- * python3 compiler.py
+ * ./setup.sh
+ 
+3. Run the run file to compile
+
+ * ./run.sh
