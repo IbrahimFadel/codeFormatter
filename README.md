@@ -1,4 +1,4 @@
-# codeFormatter
+# Code Formatter
 Help format code according to what YOU want.
 
 
